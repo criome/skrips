@@ -22,11 +22,13 @@
             mksheBang = "#!" + mksh.ol + "bin/mksh";
 
             in ''
-              ${sd} --string-mode '#!/bin/mksh' '${mksheBang}' ./src/*
+              ${sd} --string-mode '#!/bin/mksh' '${mksheBang}' src/*
+              chmod 755 $out/bin/*
             '';
 
           installPhase = ''
-            install --directory --mode 755 src/* $out/bin/
+            mkdir --parents $out/bin/
+            cp src/* $out/bin/
           '';
 
         };
