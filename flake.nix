@@ -26,7 +26,7 @@
             '';
 
           installPhase = ''
-            install --directory --mode 755 ./src/* $out/bin/
+            install --directory --mode 755 src/* $out/bin/
           '';
 
         };
