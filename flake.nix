@@ -30,7 +30,7 @@
             mkdir --parents $out/bin/
             for file in src/*
             do
-              mv "$file" $out/bin/$${file%.mksh}
+              mv "$file" $out/bin/"$${file%.mksh}"
             done
           '';
 
