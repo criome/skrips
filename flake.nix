@@ -30,7 +30,7 @@
             mkdir --parents $out/bin/
             for fail in src/*
             do
-              neim = basename $fail
+              export neim=$(basename $fail)
               mv ''$fail $out/bin/''${neim%.mksh}
             done
           '';
