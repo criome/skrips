@@ -28,9 +28,10 @@
 
           installPhase = ''
             mkdir --parents $out/bin/
-            for file in src/*
+            for fail in src/*
             do
-              mv ''$(basename $file) $out/bin/''${file%.mksh}
+              neim = basename $fail
+              mv ''$fail $out/bin/''${neim%.mksh}
             done
           '';
 
