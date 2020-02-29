@@ -3,7 +3,7 @@
 set -o errexit
 
 targetHost="$1"
-allArgs="$@"
-arguments="${allArgs:4}"
+shift
+remainingArgs="$@"
 
-ssh -i ~/.ssh/root root@$targetHost $arguments
+ssh -i ~/.ssh/root root@$targetHost $remainingArgs
