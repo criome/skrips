@@ -22,7 +22,7 @@
             mksheBang = "#!" + mksh.ol + "/bin/mksh";
 
             in ''
-              ${sd} --string-mode '#!/bin/mksh' '${mksheBang}' src/*
+              ${sd} --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
               chmod 755 src/*
             '';
 

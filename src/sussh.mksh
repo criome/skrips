@@ -1,9 +1,9 @@
-#!/bin/mksh
+#!/usr/bin/env mksh
 
 set -o errexit
 
-targetHost=$1
+targetHost="$1"
 allArgs="$@"
-arguments="${allArgs:1}"
+arguments="${allArgs:4}"
 
 ssh -i ~/.ssh/root root@$targetHost $arguments
