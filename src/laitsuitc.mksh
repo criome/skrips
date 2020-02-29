@@ -1,0 +1,11 @@
+#!/usr/bin/env mksh
+
+set -o errexit
+
+darkOrLight=$1
+vimSokets=`nvr --serverlist`
+
+for soket in $vimSokets
+do
+        nvr --servername $soket +"set bg=$darkOrLight"
+done
