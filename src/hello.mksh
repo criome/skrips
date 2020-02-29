@@ -1,5 +1,5 @@
 #!/bin/mksh
 
-arguments="${@:1}"
+arguments="${$@:1}"
 
 echo 'Hello skrips !' $arguments
