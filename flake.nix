@@ -19,7 +19,7 @@
 
           buildPhase = let
             sd = args.sd + "/bin/sd";
-            mksheBang = "#!" + mksh.ol + "bin/mksh";
+            mksheBang = "#!" + mksh.ol + "/bin/mksh";
 
             in ''
               ${sd} --string-mode '#!/bin/mksh' '${mksheBang}' src/*
