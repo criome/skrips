@@ -23,7 +23,7 @@
 
             in ''
               ${sd} --string-mode '#!/bin/mksh' '${mksheBang}' src/*
-              chmod 755 $out/bin/*
+              chmod 755 src/*
             '';
 
           installPhase = ''
