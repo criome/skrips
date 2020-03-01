@@ -7,5 +7,5 @@ vimSokets=`nvr --serverlist`
 
 for soket in $vimSokets
 do
-        nvr --servername $soket +"set bg=$darkOrLight"
+        (nvr --nostart --servername $soket +"set bg=$darkOrLight" &)
 done
