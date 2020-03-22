@@ -3,38 +3,39 @@
 
   edition = 201909;
 
-  outputs = { self }:
+  outputs = { self, gluNixPkgs, mksh }:
     let
+      pkgs = gluNixPkgs.core.mkClumsyPkgs {};
+      inherit (pkgs) stdenv sd;
+
       pname = "skrips";
       version = self.shortRev;
 
     in {
-      core.ol = { stdenv, sd, mksh }@args:
-        stdenv.mkDerivation rec {
-          inherit pname version;
+      core.komplit = stdenv.mkDerivation rec {
+        inherit pname version;
 
-          src = self;
+        src = self;
 
-          nativeBuildInputs = [ mksh.ol ];
+        nativeBuildInputs = [ mksh.core.komplit ];
 
-          buildPhase = let
-            sd = args.sd + "/bin/sd";
-            mksheBang = "#!" + mksh.ol + "/bin/mksh";
+        buildPhase = let
+          mksheBang = "#!" + mksh.core.komplit + "/bin/mksh";
 
-            in ''
-              ${sd} --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
-              chmod 755 src/*
-            '';
-
-          installPhase = ''
-            mkdir --parents $out/bin/
-            for fail in src/*
-            do
-              export neim=$(basename $fail)
-              mv ''$fail $out/bin/''${neim%.mksh}
-            done
+          in ''
+            "${sd}/bin/sd" --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
+            chmod 755 src/*
           '';
 
-        };
+        installPhase = ''
+          mkdir --parents $out/bin/
+          for fail in src/*
+          do
+            export neim=$(basename $fail)
+            mv ''$fail $out/bin/''${neim%.mksh}
+          done
+        '';
+      };
+
   };
 }
