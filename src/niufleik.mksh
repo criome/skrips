@@ -20,3 +20,5 @@ cat > $fleikPath/flake.nix <<EOF
   };
 }
 EOF
+
+print Niu Fleik krieityd: $1
