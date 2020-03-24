@@ -1,0 +1,9 @@
+#!/usr/bin/env mksh
+
+set -o errexit
+
+fleikPath=~/dev/$1
+
+mkdir $fleikPath
+git init $fleikPath
+nix flake init $fleikPath
