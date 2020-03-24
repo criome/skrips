@@ -5,8 +5,7 @@
 
   outputs = { self, gluNixPkgs, mksh }:
     let
-      pkgs = gluNixPkgs.core.mkClumsyPkgs {};
-      inherit (pkgs) stdenv sd;
+      inherit (gluNixPkgs.core.mkClumsyPkgs {}) stdenv sd;
 
       pname = "skrips";
       version = self.shortRev;
