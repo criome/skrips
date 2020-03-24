@@ -6,7 +6,7 @@ fleikPath=~/dev/$1
 
 mkdir $fleikPath
 cd $fleikPath
-git init
+git init > /dev/null
 
 cat > $fleikPath/flake.nix <<EOF
 {
