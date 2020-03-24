@@ -7,4 +7,16 @@ fleikPath=~/dev/$1
 mkdir $fleikPath
 cd $fleikPath
 git init
-nix flake init
+
+cat > $fleikPath/flake.nix <<EOF
+{
+  description = "${1}";
+
+  edition = 201909;
+
+  outputs = { self }: {
+    strok = {};
+    kor = {};
+  };
+}
+EOF
