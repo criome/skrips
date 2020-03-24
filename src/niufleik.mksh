@@ -5,5 +5,6 @@ set -o errexit
 fleikPath=~/dev/$1
 
 mkdir $fleikPath
-git init $fleikPath
-nix flake init $fleikPath
+cd $fleikPath
+git init
+nix flake init
