@@ -14,8 +14,9 @@ cat > $fleikPath/flake.nix <<EOF
 
   edition = 201909;
 
-  outputs = { self }: {
+  outputs = { self, korLib }: {
     strok = {};
+
     kor = {};
   };
 }
