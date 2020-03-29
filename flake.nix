@@ -37,5 +37,7 @@
         '';
       };
 
+      core.komplit = self.kor.komplit;
+
   };
 }
