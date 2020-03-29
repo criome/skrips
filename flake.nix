@@ -12,10 +12,6 @@
       strok.kor = "deriveicynSet";
 
       kor = {
-        mkPribiltEksek = mkSkrip.kor {
-          skrip = (self + /src/mkPribiltEksek.sh);
-        };
-
         komplit = mkDerivation rec {
           pname = "skrips";
           version = self.shortRev;
