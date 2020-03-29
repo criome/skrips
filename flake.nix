@@ -9,7 +9,9 @@
       inherit (nixpkgsPkgs.kor) sd dash;
 
     in {
-      kor.komplit = mkDerivation rec {
+      strok.kor = "deriveicyn";
+
+      kor = mkDerivation rec {
         pname = "skrips";
         version = self.shortRev;
 
@@ -37,7 +39,7 @@
         '';
       };
 
-      core.komplit = self.kor.komplit;
+      core.komplit = self.kor;
 
   };
 }
