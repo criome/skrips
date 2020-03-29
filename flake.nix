@@ -13,7 +13,7 @@
 
       kor = {
         mkPribiltEksek = mkSkrip.kor {
-          skrip = builtins.readFile (self + /src/mkPribiltEksek.sh);
+          skrip = (self + /src/mkPribiltEksek.sh);
         };
 
         komplit = mkDerivation rec {
