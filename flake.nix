@@ -3,43 +3,48 @@
 
   edition = 201909;
 
-  outputs = { self, nixpkgsPkgs, mksh }:
+  outputs = { self, nixpkgsPkgs, mksh, mkSkrip }:
     let
       inherit (nixpkgsPkgs.kor.stdenv) mkDerivation;
       inherit (nixpkgsPkgs.kor) sd dash;
 
     in {
-      strok.kor = "deriveicyn";
+      strok.kor = "deriveicynSet";
 
-      kor = mkDerivation rec {
-        pname = "skrips";
-        version = self.shortRev;
+      kor = {
+        mkPribiltEksek = mkSkrip.kor {
+          skrip = builtins.readFile (self + /src/mkPribiltEksek.sh);
+        };
 
-        src = self;
+        komplit = mkDerivation rec {
+          pname = "skrips";
+          version = self.shortRev;
 
-        nativeBuildInputs = [ mksh.core.komplit ];
+          src = self;
 
-        buildPhase = let
-          mksheBang = "#!" + mksh.core.komplit + "/bin/mksh";
-          dasheBang = "#!" + dash + "/bin/dash";
+          nativeBuildInputs = [ mksh.core.komplit ];
 
-          in ''
-            "${sd}/bin/sd" --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
-            "${sd}/bin/sd" --string-mode '#!/usr/bin/env dash' '${dasheBang}' src/*
-            chmod 755 src/*
-          '';
+          buildPhase = let
+              mksheBang = "#!" + mksh.core.komplit + "/bin/mksh";
+              dasheBang = "#!" + dash + "/bin/dash";
+            in ''
+              "${sd}/bin/sd" --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
+              "${sd}/bin/sd" --string-mode '#!/usr/bin/env dash' '${dasheBang}' src/*
+              chmod 755 src/*
+            '';
 
-        installPhase = ''
-          mkdir --parents $out/bin/
-          for fail in src/*
-          do
+          installPhase = ''
+            mkdir --parents $out/bin/
+            for fail in src/*
+            do
             export neim=$(basename $fail)
             mv ''$fail $out/bin/''${neim%.sh}
-          done
-        '';
-      };
+            done
+            '';
+          };
+        };
 
-      core.komplit = self.kor;
+      core.komplit = self.kor.komplit;
 
   };
 }
