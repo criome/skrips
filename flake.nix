@@ -6,7 +6,7 @@
   outputs = { self, nixpkgsPkgs, mksh, mkSkrip }:
     let
       inherit (nixpkgsPkgs.kor.stdenv) mkDerivation;
-      inherit (nixpkgsPkgs.kor) sd dash;
+      inherit (nixpkgsPkgs.kor) sd;
 
     in {
       strok.kor = "deriveicynSet";
@@ -22,10 +22,8 @@
 
           buildPhase = let
               mksheBang = "#!" + mksh.core.komplit + "/bin/mksh";
-              dasheBang = "#!" + dash + "/bin/dash";
             in ''
               "${sd}/bin/sd" --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
-              "${sd}/bin/sd" --string-mode '#!/usr/bin/env dash' '${dasheBang}' src/*
               chmod 755 src/*
             '';
 
