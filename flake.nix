@@ -34,9 +34,9 @@
             export neim=$(basename $fail)
             mv ''$fail $out/bin/''${neim%.sh}
             done
-            '';
-          };
+          '';
         };
+      };
 
       core.komplit = self.kor.komplit;
 
