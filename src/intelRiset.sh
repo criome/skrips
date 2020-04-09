@@ -10,7 +10,7 @@ for CPU in /sys/devices/system/cpu/cpu[0-9]*; do
         THREAD1=`cat $CPU/topology/thread_siblings_list | cut -f2 -d-`
         if [[ $CPUID = $THREAD1 ]]; then
                 echo "-> disable"
-                echo "0" > $CPU/online
+                [[ -e $CPU/online ]] && echo "0" > $CPU/online
         else
                 echo "-> enable"
                 [[ -e $CPU/online ]] && echo "1" > $CPU/online
