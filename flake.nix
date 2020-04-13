@@ -9,10 +9,13 @@
       inherit (nixpkgsPkgs.kor) sd;
 
     in {
-      strok.kor = "deriveicynSet";
+      strok = {
+        praimStrok = "niksAlfa";
+        kor = { praimStrok = "datom"; kor = "iuniks"; };
+      };
 
       kor = {
-        komplit = mkDerivation rec {
+        tri = mkDerivation rec {
           pname = "skrips";
           version = self.shortRev;
 
@@ -37,8 +40,6 @@
           '';
         };
       };
-
-      core.komplit = self.kor.komplit;
 
   };
 }
