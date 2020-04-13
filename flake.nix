@@ -11,7 +11,10 @@
     in {
       strok = {
         praimStrok = "niksAlfa";
-        kor = { praimStrok = "datom"; kor = "iuniks"; };
+        kor = {
+          praimStrok = "indeks";
+          kor = { praimStrok = "datom"; kor = "iuniks"; };
+        };
       };
 
       kor = {
