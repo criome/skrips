@@ -21,8 +21,8 @@ cat > $fleikPath/flake.nix <<EOF
       kor = {
         praimStrok = "";
         kor = { };
-        };
       };
+    };
 
     kor = {};
 
