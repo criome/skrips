@@ -24,10 +24,10 @@
 
           src = self;
 
-          nativeBuildInputs = [ mksh.core.komplit ];
+          nativeBuildInputs = [ mksh.kor.tri ];
 
           buildPhase = let
-              mksheBang = "#!" + mksh.core.komplit + "/bin/mksh";
+              mksheBang = "#!" + mksh.kor.tri + "/bin/mksh";
             in ''
               "${sd}/bin/sd" --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
               chmod 755 src/*
