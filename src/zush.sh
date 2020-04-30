@@ -11,4 +11,4 @@ zshEksek=~/.nix-profile/bin/zsh
 
 fainylKymend="export SHELL=$zshEksek && exec $zshEksek $opcynylArgz"
 
-ssh -t -i ~/.ssh/root root@$targetHost -- su -c $targetIuzyr $fainylKymend
+ssh -t -i ~/.ssh/root root@$targetHost -- su $targetIuzyr $fainylKymend
