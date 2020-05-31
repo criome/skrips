@@ -12,16 +12,13 @@ cat > $fleikPath/flake.nix <<EOF
 {
   description = "${1}";
 
-  edition = 201909;
-
   outputs = { self }: {
-
-    praimStrok = "niksAlfa";
     strok = {
-      taip = "kriom";
+      praim = { djenereicyn = 0; datomIzKriom = true; };
+      datom = { rysiv = ""; rityrn = ""; };
     };
 
-    kor = {};
+    datom = {};
 
   };
 }
