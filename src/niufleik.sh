@@ -14,10 +14,8 @@ cat > $fleikPath/flake.nix <<EOF
 
   outputs = { self }: {
     strok = {
-      praim = { djenereicyn = 0; datomIzKriom = true; };
-      taip = "";
-      rysiv = "";
-      rytyrn = "";
+      praim = { djenereicyn = 1; taip = "datom"; };
+      taip = "iuniks";
     };
 
     datom = {};
