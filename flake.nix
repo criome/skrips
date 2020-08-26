@@ -1,8 +1,6 @@
 {
   description = "Skrips";
 
-  edition = 201909;
-
   outputs = { self, nixpkgsPkgs, mksh, mkSkrip }:
     let
       inherit (nixpkgsPkgs.kor.stdenv) mkDerivation;
