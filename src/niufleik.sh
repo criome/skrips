@@ -22,4 +22,13 @@ cat > $fleikPath/flake.nix <<EOF
 }
 EOF
 
+cat > $fleikPath/lamdy.nix <<EOF
+{ ... }:
+let
+
+in
+{
+}
+EOF
+
 print Niu Fleik krieityd: $1
