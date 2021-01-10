@@ -13,11 +13,12 @@ cat > $fleikPath/flake.nix <<EOF
   description = "${1}";
 
   outputs = { self }: {
-    datom = { sobUyrld = {
-      legysiUyrld = true;
-      lamdy = import ./lamdy.nix;
-    }; };
-
+      iuniksDyraiv = {
+        legysiUyrld = true;
+        sorsFleik = self;
+        lamdy = import ./lamdy.nix;
+      };
+    };
   };
 }
 EOF
