@@ -13,6 +13,7 @@ cat > $fleikPath/flake.nix <<EOF
   description = "${1}";
 
   outputs = { self }: {
+    datom = {
       iuniksDyraiv = {
         legysiUyrld = true;
         sorsFleik = self;
