@@ -12,21 +12,10 @@ cat > $fleikPath/flake.nix <<EOF
 {
   description = "${1}";
 
-  inputs = {
-    sorsFleik = {
-      url = file:///git/github.com/NixOS/nix;
-      type = "git";
-      flake = false;
-    };
-  };
-
-  outputs = { self, sorsFleik }: {
-    datom = {
-      iuniksDyraiv = {
-        legysiUyrld = true;
-        inherit sorsFleik;
-        lamdy = import ./lamdy.nix;
-      };
+  outputs = { self }: {
+    SobUyrld = {
+      modz = [ ];
+      lamdy = import ./lamdy.nix
     };
   };
 }
