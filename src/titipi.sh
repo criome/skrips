@@ -3,8 +3,17 @@
 set -o errexit
 
 path="$1"
+shift
+remainingArgs="$@"
 
 wget --recursive \
-     --page-requisites --adjust-extension --span-hosts \
+     --continue \
+     --page-requisites \
+     --adjust-extension \
+     --no-host-directories \
      --convert-links  \
-     --no-parent $path
+     --execute robots=off --wait=1 \
+     --reject="*.js" \
+     --level inf \
+     --no-parent $path \
+     $remainingArgs
