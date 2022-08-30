@@ -1,14 +1,13 @@
 #!/usr/bin/env mksh
-
 set -o errexit
 
 fleikPath=~/dev/$1
 
 mkdir $fleikPath
 cd $fleikPath
-git init > /dev/null
+git init >/dev/null
 
-cat > $fleikPath/flake.nix <<EOF
+cat >$fleikPath/flake.nix <<EOF
 {
   description = "${1}";
 
@@ -21,7 +20,7 @@ cat > $fleikPath/flake.nix <<EOF
 }
 EOF
 
-cat > $fleikPath/lamdy.nix <<EOF
+cat >$fleikPath/lamdy.nix <<EOF
 { ... }:
 let
 

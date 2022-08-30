@@ -1,5 +1,4 @@
 #!/usr/bin/env mksh
-
 set -o errexit
 
 targetHost="$1"
