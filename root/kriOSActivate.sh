@@ -1,7 +1,7 @@
 #!/usr/bin/env mksh
-
 set -o errexit
 
+echo "KriOSActivate:"
 KriOSDerivation=$(realpath --zero $1)
 echo "KriOSDerivation: $KriOSDerivation"
 SwitchFlag=${2:-"switch"}
