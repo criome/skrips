@@ -5,32 +5,33 @@
     SobUyrld = {
       modz = [ "pkgs" "pkdjz" ];
 
-      lamdy = { stdenv, mksh, sd }:
+      lamdy = { runCommand, mksh, sd }:
+        let
+          inherit (builtins) readFile readDir mapAttrs;
 
-        stdenv.mkDerivation {
-          pname = "skrips";
-          version = self.shortRev;
-          src = self;
-
-          buildPhase =
+          mkSkrip = name: srcPath:
             let
               mksheBang = "#!" + mksh + "/bin/mksh";
             in
-            ''
-              "${sd}/bin/sd" --string-mode '#!/usr/bin/env mksh' '${mksheBang}' src/*
-              chmod 755 src/*
+            runCommand name { inherit srcPath; } ''
+              mkdir --parents $out/bin/
+              for skrip in $srcPath/*
+              do
+              export neim=$(basename $skrip)
+              cp ''$skrip $out/bin/''${neim%.sh}
+              done
+              ${sd}/bin/sd --string-mode '#!/usr/bin/env mksh' '${mksheBang}' $out/bin/*
+              chmod 755 $out/bin/*
             '';
 
-          installPhase = ''
-            mkdir --parents $out/bin/
-            for fail in src/*
-            do
-            export neim=$(basename $fail)
-            mv ''$fail $out/bin/''${neim%.sh}
-            done
-          '';
-        };
+          mkTopDirEntry = name: fileType:
+            assert (fileType == "directory");
+            mkSkrip name (self + "/${name}");
 
+          topDir = removeAttrs (readDir self) [ "flake.nix" ];
+
+        in
+        mapAttrs mkTopDirEntry topDir;
     };
   };
 }
