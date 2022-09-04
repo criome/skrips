@@ -6,6 +6,6 @@ TargetHost=${2:-"localhost"}
 SwitchFlag=${3:-"switch"}
 
 [[ $TargetHost != "localhost" ]] &&
-	nix copy root@$TargetHost $KriOSDerivation
+	nix copy --to ssh://root@$TargetHost $KriOSDerivation
 
 sush $TargetHost -- "kriOSActivate $KriOSDerivation $SwitchFlag"
