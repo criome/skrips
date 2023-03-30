@@ -13,4 +13,4 @@ fi
 [[ $TargetHost != "localhost" ]] &&
 	nix copy --to ssh://root@$TargetHost $KriOSDerivation
 
-sush $TargetHost -- "kriOSActivate $KriOSDerivation $SwitchFlag"
+ssh root@$TargetHost -- "kriOSActivate $KriOSDerivation $SwitchFlag"
