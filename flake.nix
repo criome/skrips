@@ -4,13 +4,13 @@
   outputs =
     { self }:
     {
-      SobUyrld = {
-        modz = [
+      SubWorld = {
+        mods = [
           "pkgs"
           "pkdjz"
         ];
 
-        lamdy =
+        lambda =
           {
             runCommand,
             mksh,
